@@ -1,0 +1,27 @@
+#This defines a list of services (containers) that Docker Compose will manage.
+services:
+  #First service is pgdatabase: Can use this name as a hostname
+  pgdatabase:
+    # pull and run postgres 17 from docker hub
+    image: postgres:17
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=ny_taxi
+    # lưu trữ lâu dài
+    volumes:
+      #gắn 1 local folder to the postgres dâta directory inside the container
+      # ensure db vẫn đc lưu trữ sau khi container stop
+      # :rw at the end means the volume is mounted with read-write permissions
+      - "D:/Download from Edge/docker/docker_sql_data:/var/lib/postgresql/data:rw"
+    ports:
+      #mapping local port->container port
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      # can acces pgadmin in your browser at https://localhost:8080
+      - "8080:80"

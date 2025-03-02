@@ -53,34 +53,10 @@ docker run -it \
     --port=5432 \
     --db=ny_taxi \
     --table_name=ny_taxi_data \
-    --url=${URL}{
- "cells": [
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "#Downloading the data"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "vscode": {
-     "languageId": "plaintext"
-    }
-   },
-   "outputs": [],
-   "source": [
-    "wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz "
-   ]
-  }
- ],
- "metadata": {
-  "language_info": {
-   "name": "python"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 2
-}
+    --url=${URL}
+#run docker compose
+docker compose up
+docker compose down #to shutting down compose
+#and can run it in background with detached mode
+docker compose up -d
+ 
